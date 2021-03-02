@@ -9,9 +9,11 @@ class BarcodePaint extends StatelessWidget {
       this.borderRadius = BorderRadius.zero});
 
   final Barcode barcode;
+
   /// size of barcode
   final Size size;
   final BorderRadiusGeometry borderRadius;
+
   // padding around barcode
   final EdgeInsetsGeometry padding;
 
