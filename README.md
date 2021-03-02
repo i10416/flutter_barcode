@@ -34,4 +34,4 @@ dependencies:
   );
 ```
 
-![flutter barcode sample](./sample.jpg)
+<img alt="flutter barcode sample" src="./sample.jpg" width="300px" />
