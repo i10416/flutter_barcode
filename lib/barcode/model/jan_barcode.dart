@@ -8,6 +8,7 @@ import 'package:flutter_barcode/barcode/symbols/right_guard_symbol.dart';
 import 'package:flutter_barcode/barcode/symbols/right_margin.dart';
 import 'package:flutter_barcode/barcode/symbols/right_parity_symbol.dart';
 
+/// 13 digit Jan barcode model.
 class JANBarcode extends Barcode with JANBarcodeSpecification {
   JANBarcode({required this.rawValue}) : super();
 

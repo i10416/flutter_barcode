@@ -10,6 +10,9 @@ A custom widget which generates and displays a barcode.
 ## install
 
 ```yaml:pubspec.yaml
+dependencies:
+  flutter_barcode:
+    git: git@github.com:ItoYo16u/flutter_barcode.git
 
 ```
 

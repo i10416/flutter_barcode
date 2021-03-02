@@ -3,8 +3,9 @@ import 'package:flutter_barcode/barcode/model/nw7_barcode.dart';
 
 enum BarcodeType { jan, code39, nw7 }
 
+/// Currently supporting Jan, nw7 barcode specification.
 abstract class Barcode {
-  /// generate Jan Barcode. rawValue.length must be 13 and should consist of numbers.
+  /// generate Jan Barcode. rawValue.length must be 13 and rawValue should consist of numbers.
   static Barcode jan(String rawValue) {
     if (rawValue.length != 13) {
       throw ArgumentError();
