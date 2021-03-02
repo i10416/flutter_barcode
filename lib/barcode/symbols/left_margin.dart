@@ -4,7 +4,7 @@ class LeftMargin implements BarcodeSymbol {
   LeftMargin({this.value});
 
   @override
-  final String value;
+  final String? value;
 
   @override
   BarcodeSymbol setValue(String _) => this;

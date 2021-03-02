@@ -4,7 +4,7 @@ class CenterGuardSymbol implements BarcodeSymbol {
   CenterGuardSymbol({this.value});
 
   @override
-  final String value;
+  final String? value;
 
   @override
   List<bool> toPattern() => [false, true, false, true, false];

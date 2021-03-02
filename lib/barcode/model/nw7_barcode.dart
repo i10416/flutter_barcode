@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_barcode/barcode/model/barcode.dart';
 import 'package:flutter_barcode/barcode/symbols/left_margin.dart';
 import 'package:flutter_barcode/barcode/symbols/nw7_barcode_symbol.dart';
 import 'package:flutter_barcode/barcode/symbols/right_margin.dart';
 
 class NW7Barcode extends Barcode {
-  NW7Barcode({@required this.rawValue}) : super();
+  NW7Barcode({required this.rawValue}) : super();
 
   final String rawValue;
 
@@ -14,7 +13,7 @@ class NW7Barcode extends Barcode {
       LeftMargin().toPattern() +
       rawValue
           .split('')
-          .expand((v) => MW7BarcodeSymbol(value: v).toPattern())
+          .expand((v) => MW7BarcodeSymbol(value: v).toPattern()!)
           .toList() +
       RightMargin().toPattern();
 

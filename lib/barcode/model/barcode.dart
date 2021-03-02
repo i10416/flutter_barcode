@@ -15,5 +15,5 @@ abstract class Barcode {
 
   String get value;
 
-  List<bool> toPattern();
+  List<bool>? toPattern();
 }

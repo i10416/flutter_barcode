@@ -4,7 +4,7 @@ import 'package:flutter_barcode/barcode/model/barcode.dart';
 class BarcodePaint extends StatelessWidget {
   /// バーコードの読み込み安定化のため、[padding]で上下の余白の指定を推奨
   const BarcodePaint(this.barcode,
-      {@required this.size,
+      {required this.size,
       this.padding = EdgeInsets.zero,
       this.borderRadius = BorderRadius.zero});
 
@@ -27,7 +27,7 @@ class BarcodePaint extends StatelessWidget {
         child: CustomPaint(
           size: size,
           painter: _SquarePainter(
-              barcode.toPattern(),
+              barcode.toPattern()!,
               Size(size.width - padding.horizontal,
                   size.height - padding.vertical)),
         ),

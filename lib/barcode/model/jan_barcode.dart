@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_barcode/barcode/model/barcode.dart';
 import 'package:flutter_barcode/barcode/specification/barcode_specification.dart';
 import 'package:flutter_barcode/barcode/symbols/barcode_symbol.dart';
@@ -10,15 +9,15 @@ import 'package:flutter_barcode/barcode/symbols/right_margin.dart';
 import 'package:flutter_barcode/barcode/symbols/right_parity_symbol.dart';
 
 class JANBarcode extends Barcode with JANBarcodeSpecification {
-  JANBarcode({@required this.rawValue}) : super();
+  JANBarcode({required this.rawValue}) : super();
 
   final String rawValue;
 
   @override
-  List<bool> toPattern() {
+  List<bool>? toPattern() {
     final head = rawValue[0];
     final body = rawValue.substring(1);
-    final leftBlockSymbols = leftParitySpecification[head]
+    final leftBlockSymbols = leftParitySpecification[head]!
         .asMap()
         .entries
         .map((e) => e.value.setValue(body[e.key]))
@@ -35,7 +34,7 @@ class JANBarcode extends Barcode with JANBarcodeSpecification {
       RightGuardSymbol(),
       RightMargin(),
     ];
-    return numberSymbolsOrigin.expand((e) => e.toPattern()).toList();
+    return numberSymbolsOrigin.expand((e) => e.toPattern()!).toList();
   }
 
   @override

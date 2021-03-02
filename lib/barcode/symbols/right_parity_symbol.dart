@@ -5,11 +5,11 @@ class RightParityModule implements BarcodeSymbol {
   RightParityModule({this.value});
 
   @override
-  final String value;
+  final String? value;
 
   @override
   List<bool> toPattern() =>
-      LeftOddParityModule(value: value).toPattern().map((b) => !b).toList();
+      LeftOddParityModule(value: value).toPattern()!.map((b) => !b).toList();
 
   @override
   BarcodeSymbol setValue(String v) => RightParityModule(value: v);

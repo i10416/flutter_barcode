@@ -5,7 +5,7 @@ class RightGuardSymbol implements BarcodeSymbol {
   RightGuardSymbol({this.value});
 
   @override
-  final String value;
+  final String? value;
 
   @override
   List<bool> toPattern() => LeftGuardSymbol(value: value).toPattern();

@@ -4,7 +4,7 @@ class LeftGuardSymbol implements BarcodeSymbol {
   LeftGuardSymbol({this.value});
 
   @override
-  final String value;
+  final String? value;
 
   @override
   List<bool> toPattern() => [true, false, true];

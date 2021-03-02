@@ -5,14 +5,14 @@ class LeftEvenParityModule implements BarcodeSymbol {
   LeftEvenParityModule({this.value});
 
   @override
-  final String value;
+  final String? value;
 
   @override
   LeftEvenParityModule setValue(String v) => LeftEvenParityModule(value: v);
 
   @override
   List<bool> toPattern() => LeftOddParityModule(value: value)
-      .toPattern()
+      .toPattern()!
       .reversed
       .map((b) => !b)
       .toList();
