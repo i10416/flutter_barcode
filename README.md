@@ -2,7 +2,7 @@
 
 A custom widget which generates and displays a barcode.
 
-## Spec
+## Support
 
 - JAN
 - NW7
