@@ -27,7 +27,7 @@ class BarcodePaint extends StatelessWidget {
         child: CustomPaint(
           size: size,
           painter: _SquarePainter(
-              barcode.toPattern()!,
+              barcode.toPattern(),
               Size(size.width - padding.horizontal,
                   size.height - padding.vertical)),
         ),

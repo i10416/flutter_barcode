@@ -14,16 +14,17 @@ class JANBarcode extends Barcode with JANBarcodeSpecification {
   final String rawValue;
 
   @override
-  List<bool>? toPattern() {
+  List<bool> toPattern() {
     final head = rawValue[0];
     final body = rawValue.substring(1);
     final leftBlockSymbols = leftParitySpecification[head]!
         .asMap()
         .entries
-        .map((e) => e.value.setValue(body[e.key]))
+        .map((e) => e.value(body[e.key]))
         .toList();
-    final rightBlockSymbols = List<BarcodeSymbol>.generate(6,
-            (index) => RightParityModule().setValue(body.substring(6)[index]))
+
+    final rightBlockSymbols = List<BarcodeSymbol>.generate(
+            6, (index) => RightParityModule(value: body.substring(6)[index]))
         .toList();
     final numberSymbolsOrigin = <BarcodeSymbol>[
       LeftMargin(),
@@ -34,7 +35,7 @@ class JANBarcode extends Barcode with JANBarcodeSpecification {
       RightGuardSymbol(),
       RightMargin(),
     ];
-    return numberSymbolsOrigin.expand((e) => e.toPattern()!).toList();
+    return numberSymbolsOrigin.expand((e) => e.toPattern()).toList();
   }
 
   @override

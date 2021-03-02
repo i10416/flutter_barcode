@@ -13,7 +13,7 @@ class NW7Barcode extends Barcode {
       LeftMargin().toPattern() +
       rawValue
           .split('')
-          .expand((v) => MW7BarcodeSymbol(value: v).toPattern()!)
+          .expand((v) => MW7BarcodeSymbol(value: v).toPattern())
           .toList() +
       RightMargin().toPattern();
 
