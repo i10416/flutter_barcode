@@ -17,10 +17,18 @@ A custom widget which generates and displays a barcode.
 
 ```dart
 
-  Card(
-    child: BarcodePaint(
-    Barcode.jan("<here's barcode value>"), // or Barcode.nw7("<...>")
-    size: Size(100,50),
-    )
+  Column(
+    children:[
+      BarcodePaint(
+        Barcode.jan('4011200296908'), // or Barcode.nw7("<...>")
+          size: Size(100,50),
+        ),
+        Container(
+          align:Alignment.center,
+          padding: EdgeInsets.all(8),
+          child: Text('4011200296908')
+      ]
   );
 ```
+
+[flutter barcode sample](./sample.jpg)
