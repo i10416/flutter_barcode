@@ -2,7 +2,7 @@ import 'package:flutter_barcode/barcode/symbols/barcode_symbol.dart';
 import 'package:flutter_barcode/barcode/symbols/left_even_parity_symbol.dart';
 import 'package:flutter_barcode/barcode/symbols/left_odd_parity_symbol.dart';
 
-// NOTE: boolean ではなく "█" と " " であらわしてbooleanにmapしたほうがいいかもしれない
+// NOTE:  It would be better if barcode specification is defined by lists that consists of "█" and " " and `toPattern` method maps "█" to true and " " to false.
 // e.g. "█ █  ██ █".map((e)=> e=="█" ? true : false).toList()
 
 mixin JANBarcodeModuleSpecification on BarcodeSymbol {

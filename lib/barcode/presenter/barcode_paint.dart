@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_barcode/barcode/model/barcode.dart';
 /// widget to display barcode image
 class BarcodePaint extends StatelessWidget {
-  /// バーコードの読み込み安定化のため、[padding]で上下の余白の指定を推奨
   const BarcodePaint(this.barcode,
       {required this.size,
       this.padding = EdgeInsets.zero,
