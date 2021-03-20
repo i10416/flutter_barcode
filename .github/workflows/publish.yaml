@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Setup credentials
-      run: |
+        run: |
         mkdir -p ~/.pub-cache
         cat <<EOF > ~/.pub-cache/credentials.json
         {
