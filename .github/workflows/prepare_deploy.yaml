@@ -20,3 +20,4 @@ jobs:
           GIT_PR_RELEASE_BRANCH_PRODUCTION: release
           GIT_PR_RELEASE_BRANCH_STAGING: master
           GIT_PR_RELEASE_LABELS: release
+          GIT_PR_RELEASE_TEMPLATE: .release-template
