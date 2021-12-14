@@ -1,6 +1,6 @@
 name: flutter_barcode
 description: A custom widget which generates and displays a barcode.
-version: 0.0.2
+version: 0.0.2+1
 homepage: https://github.com/ItoYo16u/flutter_barcode
 
 environment:
