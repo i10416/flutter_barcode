@@ -1,0 +1,45 @@
+name: Create a release PR
+# create release tag from PR named release/vx.x.x` on merge to release branch
+# and then publish package.
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - release
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    steps:
+      - name: create release
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.event.pull_request.title }}
+          body: ${{ github.event.pull_request.body }}
+          allowUpdates: true
+  release:
+    runs-on: ubuntu-latest
+    needs:
+      - create-release
+    container:
+      image:  google/dart:latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup credentials
+        run: |
+          mkdir -p ~/.pub-cache
+          cat <<EOF > ~/.pub-cache/credentials.json
+          {
+            "accessToken":"${{ secrets.OAUTH_ACCESS_TOKEN }}",
+            "refreshToken":"${{ secrets.OAUTH_REFRESH_TOKEN }}",
+            "tokenEndpoint":"https://accounts.google.com/o/oauth2/token",
+            "scopes": [ "openid", "https://www.googleapis.com/auth/userinfo.email" ],
+            "expiration": 1616261793933
+          }
+          EOF
+      - name: publish
+        run: pub publish -f

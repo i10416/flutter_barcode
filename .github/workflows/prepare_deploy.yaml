@@ -1,0 +1,22 @@
+name: Create a release PR
+# create release PR `release/vx.x.x` on merging pull request to master/main.
+on:
+  pull_request:
+    types:
+      - closed
+    branches: [ master, main ]
+jobs:
+  create-release-pr:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: create a release PR
+        uses: bakunyo/git-pr-release-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIT_PR_RELEASE_BRANCH_PRODUCTION: release
+          GIT_PR_RELEASE_BRANCH_STAGING: master
+          GIT_PR_RELEASE_LABELS: release

@@ -1,0 +1,21 @@
+name: test
+on:
+  pull_request:
+    types: [opened, synchronize]
+  push:
+    branches: [ master ]
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    container:
+      image:  google/dart:latest
+    steps:
+      - name: set up repository
+        uses: actions/checkout@v2
+      - name: install deps
+        run: pub get
+      - name: analyzer
+        run: dartanalyzer --fatal-warnings --fatal-infos .
+      - name: test
+        run: pub run test ./
