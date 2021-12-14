@@ -1,0 +1,7 @@
+v1.x.x
+
+- [ ] Title should be `vx.y.z`
+- [ ] Make sure you updated the version in pubspec.yaml
+<% pull_requests.each do |pr| -%>
+<%=  pr.to_checklist_item %>
+<% end -%>
