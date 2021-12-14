@@ -1,0 +1,22 @@
+name: test
+on:
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - master
+      - main
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: set up repository
+        uses: actions/checkout@v2
+      - name: setup flutter
+        uses: subosito/flutter-action@v1
+      - name: install deps
+        run: pub get
+      - name: analyzer
+        run: dartanalyzer --fatal-warnings --fatal-infos .
+          #- name: test
+          #run: flutter test
