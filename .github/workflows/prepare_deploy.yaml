@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: create a release PR
@@ -20,3 +20,4 @@ jobs:
           GIT_PR_RELEASE_BRANCH_PRODUCTION: release
           GIT_PR_RELEASE_BRANCH_STAGING: master
           GIT_PR_RELEASE_LABELS: release
+          GIT_PR_RELEASE_TEMPLATE: .release-template
