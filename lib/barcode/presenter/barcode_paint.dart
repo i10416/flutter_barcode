@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode/barcode/model/barcode.dart';
+
 /// widget to display barcode image
 class BarcodePaint extends StatelessWidget {
   const BarcodePaint(this.barcode,
@@ -12,6 +13,7 @@ class BarcodePaint extends StatelessWidget {
   /// size of barcode
   final Size size;
   final BorderRadiusGeometry borderRadius;
+  final Color backgroundColor;
 
   // padding around barcode
   final EdgeInsetsGeometry padding;
@@ -20,7 +22,7 @@ class BarcodePaint extends StatelessWidget {
   Widget build(BuildContext context) => Container(
         padding: padding,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: backgroundColor,
           borderRadius: borderRadius,
         ),
         child: CustomPaint(
@@ -28,15 +30,18 @@ class BarcodePaint extends StatelessWidget {
           painter: _SquarePainter(
               barcode.toPattern(),
               Size(size.width - padding.horizontal,
-                  size.height - padding.vertical)),
+                  size.height - padding.vertical),
+              backgroundColor),
         ),
       );
 }
 
 class _SquarePainter extends CustomPainter {
-  _SquarePainter(this.barcodePattern, this.size) : super();
+  _SquarePainter(this.barcodePattern, this.size, this.backgroundColor)
+      : super();
   final List<bool> barcodePattern;
   final Size size;
+  final Color backgroundColor;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -45,7 +50,7 @@ class _SquarePainter extends CustomPainter {
       ..style = PaintingStyle.fill
       ..strokeWidth = 1;
     final emptyPaint = Paint()
-      ..color = Colors.white
+      ..color = backgroundColor
       ..style = PaintingStyle.fill
       ..strokeWidth = 1;
     final unitWidth = size.width / barcodePattern.length;
